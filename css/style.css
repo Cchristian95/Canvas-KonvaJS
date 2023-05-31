@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #313131;
+  }
+  
+  .tools {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 15px;
+  }
+    #rectBtn {
+      position: absolute;
+      top: 15px;
+      left: 10px;
+    }
+    #circleBtn {
+      position: absolute;
+      top: 15px;
+      left: 110px;
+    }
+    #triangleBtn {
+      position: absolute;
+      top: 15px;
+      left: 210px;
+    }
+    #deleteBtn {
+      position: absolute;
+      top: 15px;
+      right: 10px;
+    }
+    #editarBtn {
+      position: absolute;
+      top: 15px;
+      right: 110px;
+    }
+    #cleanBtn {
+      color: white;
+      background: #222;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-block;
+      box-sizing: border-box;
+    }
+  
+    .tools .button {
+      width: 90px;
+      height: 30px;
+      border: 2px solid white;
+      cursor: pointer;
+      color: white;
+      background: #222;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+  
+    .tools .color-field {
+      height: 40px;
+      width: 40px;
+      min-height: 40px;
+      min-width: 40px;
+      cursor: pointer;
+      display: inline-block;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 2px solid white;
+      align-self: center;
+      margin: 0 10px;
+    }
+  
+    .color-picker {
+      align-self: center;
+      margin: 0 10px;
+      height: 40px;
+    }
+  
