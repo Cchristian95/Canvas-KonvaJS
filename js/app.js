@@ -1,19 +1,25 @@
 //variables
 var shape = [];
 var selectedShape = null;
-var shapeColor = 'black';
+var shapeColor = "black";
 var strokeWidth = 3;
 var id = 0;
+
+//Variables del cambio de color
+var red = document.querySelector('#redColor');
+var blue = document.querySelector('#blueColor');
+var green = document.querySelector('#greenColor');
+var yellow = document.querySelector('#yellowColor');
 
 var tr = new Konva.Transformer();
 // layer.add(tr);
 tr.nodes([]);
 
 var width = window.innerWidth;
-var height = 500;
+var height = window.innerHeight*0.8;
 
 var stage = new Konva.Stage({
-  container: 'container',
+  container: "container",
   width: width,
   height: height,
 });
@@ -23,34 +29,34 @@ stage.add(layer);
 
 // add a new feature, lets add ability to draw selection rectangle
 var selectionRectangle = new Konva.Rect({
-  fill: 'rgba(0,0,255,0.3)',
+  fill: "rgba(0,0,255,0.3)",
   visible: false,
 });
 layer.add(selectionRectangle);
 
 //Event Listener
 //Boton toolbar
-document.getElementById('rectBtn').addEventListener('click', createRect);
-document.getElementById('circleBtn').addEventListener('click', createCircle);
-document.getElementById('triangleBtn').addEventListener('click', createTriangle);
-document.getElementById('deleteBtn').addEventListener('click', removeShape);
+document.getElementById("rectBtn").addEventListener("click", createRect);
+document.getElementById("circleBtn").addEventListener("click", createCircle);
+document.getElementById("triangleBtn").addEventListener("click", createTriangle);
+document.getElementById("deleteBtn").addEventListener("click", removeShape);
 // document.getElementById('deleteAllBtn').addEventListener('click', deleteAll);
 
 //Change of color
-document.getElementById('fillBtn').addEventListener('click', selectFill);
-document.getElementById('redColor').addEventListener('click', changeColorRed);
-document.getElementById('blueColor').addEventListener('click', changeColorBlue);
-document.getElementById('greenColor').addEventListener('click', changeColorGreen);
-document.getElementById('yellowColor').addEventListener('click', changeColorYellow);
+red.addEventListener("click", changeColor);
+blue.addEventListener("click", changeColor);
+green.addEventListener("click", changeColor);
+yellow.addEventListener("click", changeColor);
+document.getElementById("fillBtn").addEventListener("click", selectFill);
 
 //Change of Stroke
-document.getElementById('strokeWidth').addEventListener('click', changeStroke);
-document.getElementById('strokeBtn').addEventListener('click', colorStroke);
+document.getElementById("strokeWidth").addEventListener("click", changeStroke);
+document.getElementById("strokeBtn").addEventListener("click", colorStroke);
 
 //Events
 // by default select all shapes
 var x1, y1, x2, y2;
-stage.on('mousedown touchstart', (e) => {
+stage.on("mousedown touchstart", (e) => {
   // do nothing if we mousedown on any shape
   if (e.target !== stage) {
     return;
@@ -66,7 +72,7 @@ stage.on('mousedown touchstart', (e) => {
   selectionRectangle.height(0);
 });
 
-stage.on('mousemove touchmove', (e) => {
+stage.on("mousemove touchmove", (e) => {
   // do nothing if we didn't start selection
   if (!selectionRectangle.visible()) {
     return;
@@ -83,7 +89,7 @@ stage.on('mousemove touchmove', (e) => {
   });
 });
 
-stage.on('mouseup touchend', (e) => {
+stage.on("mouseup touchend", (e) => {
   // do nothing if we didn't start selection
   if (!selectionRectangle.visible()) {
     return;
@@ -94,7 +100,7 @@ stage.on('mouseup touchend', (e) => {
     selectionRectangle.visible(false);
   });
 
-  var shapes = stage.find('.rect,.circle,.triangle');
+  var shapes = stage.find(".rect,.circle,.triangle");
   var box = selectionRectangle.getClientRect();
   var selected = shapes.filter((shape) =>
     Konva.Util.haveIntersection(box, shape.getClientRect())
@@ -103,7 +109,7 @@ stage.on('mouseup touchend', (e) => {
 });
 
 // clicks should select/deselect shapes
-stage.on('click tap', function (e) {
+stage.on("click tap", function (e) {
   // if we are selecting with rect, do nothing
   if (selectionRectangle.visible()) {
     console.log("En Stage");
@@ -118,9 +124,13 @@ stage.on('click tap', function (e) {
   }
 
   // do nothing if clicked NOT on our shapes
-  if (!e.target.hasName('rect') || !e.target.hasName('circle') || !e.target.hasName('triangle')) {
+  if (
+    !e.target.hasName("rect") ||
+    !e.target.hasName("circle") ||
+    !e.target.hasName("triangle")
+  ) {
     selectShape(e);
-    console.log(e.target);
+    console.log("este ",e.target);
   }
 
   // do we pressed shift or ctrl?
@@ -146,12 +156,12 @@ function createRect() {
   console.log("ShapeRect");
   rect1 = new Konva.Rect({
     id: id,
-    x: 60,
-    y: 80,
+    x: 90,
+    y: 110,
     width: 100,
     height: 60,
-    fill: 'yellow',
-    name: 'rect',
+    fill: "yellow",
+    name: "rect",
     strokeWidth: strokeWidth,
     stroke: shapeColor,
     shadowColor: "black",
@@ -161,8 +171,7 @@ function createRect() {
   });
   layer.add(rect1);
   layer.add(tr);
-  return
-
+  return;
 }
 
 // Create circle
@@ -171,143 +180,122 @@ function createCircle() {
   console.log("ShapeCircle");
   circle1 = new Konva.Circle({
     id: id,
-    x: 220,
-    y: 110,
+    x: 260,
+    y: 140,
     radius: 50,
     width: 100,
     height: 80,
-    fill: 'blue',
+    fill: "blue",
     strokeWidth: strokeWidth,
     stroke: shapeColor,
-    name: 'circle',
+    name: "circle",
     shadowColor: "black",
     shadowBlur: 15,
     shadowOpacity: 0.5,
-    draggable: true
+    draggable: true,
   });
   layer.add(circle1);
   layer.add(tr);
-  return
+  return;
 }
 
 // Create triangle
 function createTriangle() {
   id += 1;
-  console.log("ShapeTriangle")
+  console.log("ShapeTriangle");
   triangle1 = new Konva.RegularPolygon({
     id: id,
-    x: 320,
-    y: 120,
+    x: 360,
+    y: 150,
     sides: 3,
     radius: 50,
-    fill: 'green',
-    name: 'triangle',
+    fill: "green",
+    name: "triangle",
     strokeWidth: strokeWidth,
     stroke: shapeColor,
     shadowColor: "black",
     shadowBlur: 15,
     shadowOpacity: 0.5,
-    draggable: true
+    draggable: true,
   });
   layer.add(triangle1);
   layer.add(tr);
   console.log(stage);
-  return
+  return;
 }
-
-//Delete all
-// function  deleteAll(){
-//   layer.children.forEach(element => {
-//     if (element != null) {
-//       element.destroy();
-//     }
-//   });
-// }
 
 // Erase shapes
 function removeShape() {
-  layer.children.forEach(element => {
+  console.log(layer.children);
+  layer.children.forEach((element) => {
     if (element.attrs.id === selectedShape) {
+      alert("Desea borrarlo");
       element.destroy();
-      selectedShape = null
+      selectedShape = null;
       console.log("Eliminado ", selectedShape);
     }
   });
+  console.log(layer.children);
+  deselectShape();
 }
 
 //Select Stroke or fill
 // Chage stroke
 function colorStroke() {
-  console.log('Color seleccionado', shapeColor)
-  layer.children.forEach(element => {
+  console.log("Color seleccionado", shapeColor);
+  layer.children.forEach((element) => {
     if (element.attrs.id === selectedShape) {
       element.attrs.stroke = shapeColor;
     }
   });
+  deselectShape();
+  // selectShape();
 }
 
-var width = document.getElementById('strokeWidth');
+var width = document.getElementById("strokeWidth");
 function changeStroke() {
-  console.log('Rango seleccionado', width.value);
-  layer.children.forEach(element => {
+  console.log("Rango seleccionado", width.value);
+  layer.children.forEach((element) => {
     if (element.attrs.id === selectedShape) {
       console.log(width.value);
-        element.attrs.strokeWidth = width.value;
+      element.attrs.strokeWidth = width.value;
     }
   });
+  deselectShape();
+  // selectShape();
 }
 
 // Change Color wit picker
 function selectFill() {
-  console.log('Entro con color ', shapeColor)
-  layer.children.forEach(element => {
+  console.log("Entro con color ", shapeColor);
+  layer.children.forEach((element) => {
     if (element.attrs.id === selectedShape) {
       element.attrs.fill = shapeColor;
     }
   });
+  deselectShape();
 }
 
 // Change Color
-function changeColorRed() {
-  console.log("Entro a seccion red");
-  layer.children.forEach(element => {
+function changeColor(e) {
+  e.stopPropagation();
+  console.log("Entro color");
+  layer.children.forEach((element) => {
     if (element.attrs.id === selectedShape) {
-      element.attrs.fill = 'red';
-      console.log("cambio color")
+      element.attrs.fill = e.target.style.background;
+      console.log("cambio color");
     }
   });
-}
-function changeColorBlue() {
-  console.log("Entro a seccion blue");
-  layer.children.forEach(element => {
-    if (element.attrs.id === selectedShape) {
-      element.attrs.fill = 'blue';
-    }
-  });
-}
-function changeColorGreen() {
-  console.log("Entro a seccion green");
-  layer.children.forEach(element => {
-    if (element.attrs.id === selectedShape) {
-      element.attrs.fill = 'green';
-    }
-  });
-}
-function changeColorYellow() {
-  console.log("Entro a seccion yellow");
-  layer.children.forEach(element => {
-    if (element.attrs.id === selectedShape) {
-      element.attrs.fill = 'yellow';
-    }
-  });
+  deselectShape();
+  // selectShape();
 }
 
 //Select shapes
 function selectShape(e) {
-  deselectShape();
+  // deselectShape();
   const id = e.target.attrs.id;
   selectedShape = id;
-  console.log('Figura seleccionada:', selectedShape);
+  console.log("Figura seleccionada:", selectedShape);
   layer.draw();
 }
 
@@ -318,7 +306,3 @@ function deselectShape() {
     layer.draw();
   }
 }
-
-
-
-

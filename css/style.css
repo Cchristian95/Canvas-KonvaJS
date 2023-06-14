@@ -11,105 +11,134 @@ body {
   flex-direction: row;
   margin-top: 15px;
 }
-  #rectBtn {
-    position: absolute;
-    top: 15px;
-    left: 10px;
-  }
-  #circleBtn {
-    position: absolute;
-    top: 15px;
-    left: 110px;
-  }
-  #triangleBtn {
-    position: absolute;
-    top: 15px;
-    left: 210px;
-  }
-  #deleteBtn {
-    position: absolute;
-    top: 15px;
-    right: 10px;
-  }
-  #editarBtn {
-    position: absolute;
-    top: 15px;
-    right: 110px;
-  }
-  
-  #cleanBtn {
-    color: white;
-    background: #222;
-    font-weight: bold;
-    cursor: pointer;
-    display: inline-block;
-    box-sizing: border-box;
-  }
+#rectBtn {
+  position: absolute;
+  top: 35px;
+  left: 30px;
+}
+#circleBtn {
+  position: absolute;
+  top: 35px;
+  left: 130px;
+}
+#triangleBtn {
+  position: absolute;
+  top: 35px;
+  left: 230px;
+}
+#deleteBtn {
+  position: absolute;
+  top: 35px;
+  right: 30px;
+}
+#editarBtn {
+  position: absolute;
+  top: 35px;
+  right: 130px;
+}
 
-  .tools .button {
-    width: 90px;
-    height: 30px;
-    border: 1px solid white;
-    cursor: pointer;
-    color: white;
-    background: #615d5d;
-    font-weight: bold;
-    margin: 0 10px;
-  }
+#cleanBtn {
+  color: white;
+  background: #222;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+  box-sizing: border-box;
+}
 
-  .tools .color-field {
-    height: 30px;
-    width: 30px;
-    min-height: 30px;
-    min-width: 30px;
-    cursor: pointer;
-    display: inline-block;
-    box-sizing: border-box;
-    border-radius: 50%;
-    border: 2px solid white;
-    align-self: center;
-    margin: 0 10px;
-  }
-  
-  .color-picker {
-    display: inline-block;
-    align-self: center;
-    cursor: pointer;
-    padding: 1px;
-    margin: 0 10px;
-    height: 40px;
-  }
+.tools .button {
+  width: 90px;
+  height: 30px;
+  border: 1px solid white;
+  cursor: pointer;
+  color: white;
+  background: #615d5d;
+  font-weight: bold;
+  margin: 0 10px;
+}
 
-  .sub-tools {
-    margin: 0 0 0px;
-    padding: 0 0 0px;
-  }
-  
-  .sub-tools .containerShapeStroke {
-    display: inline-block;
-    cursor: pointer;
-    align-self: center;
-    text-align: center;
-    font-size: 0.7em;
-    color: aliceblue;
-    margin: 0 10px;
-  }
-  
-  .sub-tools .containerShapeColor {
-    display: inline-block;
-    cursor: pointer;
-    align-self: center;
-    text-align: center;
-    font-size: 0.7em;
-    color: aliceblue;
-    margin: 0 50px;
-  } 
+.tools .color-field {
+  height: 30px;
+  width: 30px;
+  min-height: 30px;
+  min-width: 30px;
+  cursor: pointer;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2px solid white;
+  align-self: center;
+  margin: 0 10px;
+}
 
-  .containerSubTools {
-    display: inline-block;
-    cursor: pointer;
-    align-self: center;
-    text-align: center;
-    color: aliceblue;
-    margin: 0 50px;
-  } 
+.color-picker {
+  display: inline-block;
+  align-self: center;
+  cursor: pointer;
+  padding: 1px;
+  margin: 0 10px;
+  height: 35px;
+}
+
+.sub-tools {
+  margin: 0 0 0px;
+  padding: 0 0 0px;
+}
+
+.containerShapeStroke {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.8em;
+  color: aliceblue;
+  margin: 0 10px;
+}
+
+.containerShapeColor {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.8em;
+  color: aliceblue;
+  margin: 0 50px;
+}
+
+.containerSubTools {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  color: aliceblue;
+  margin: 0 50px;
+}
+
+.sub-tools {
+  display: inline-block;
+  cursor: pointer;
+  align-self: center;
+  text-align: center;
+  font-size: 0.8em;
+  color: aliceblue;
+  margin: 0 50px;
+}
+
+.sub-tools .buttonfill {
+  width: 60px;
+  height: 30px;
+  border: 1px solid black;
+  cursor: pointer;
+  color: white;
+  background: #615d5d;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.sub-tools .buttonstroke {
+  width: 60px;
+  height: 30px;
+  border: 1px solid black;
+  cursor: pointer;
+  color: white;
+  background: #615d5d;
+  font-weight: bold;
+  margin: 0 10px;
+}
